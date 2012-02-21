@@ -1,0 +1,21 @@
+<package>
+  <description brief="qbo_stereo_selector">
+
+     qbo_stereo_selector
+
+  </description>
+  <author>Arturo Bajuelos Castillo</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/qbo_stereo_selector</url>
+  <depend package="roscpp"/>
+  <depend package="opencv2"/>
+  <depend package="cv_bridge"/>
+  <depend package="sensor_msgs"/>
+  <depend package="stereo_msgs"/>
+  <depend package="image_transport"/>
+  <depend package="qbo_arduqbo"/>
+  
+</package>
+
+
