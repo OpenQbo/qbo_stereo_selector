@@ -4,8 +4,8 @@
      qbo_stereo_selector
 
   </description>
-  <author>Arturo Bajuelos Castillo</author>
-  <license>BSD</license>
+  <author>Maintained by Arturo Bajuelos</author>
+  <license>GPLv2</license>
   <review status="unreviewed" notes=""/>
   <url>http://ros.org/wiki/qbo_stereo_selector</url>
   <depend package="roscpp"/>
