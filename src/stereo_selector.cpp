@@ -116,7 +116,7 @@ void StereoSelector::onInit()
 
 	//ROS Publishers - nose color and head movement
 	joint_pub_ = private_nh_.advertise<sensor_msgs::JointState>("/cmd_joints", 1);
-	nose_color_pub_ = private_nh_.advertise<qbo_arduqbo::Nariz>("/cmd_nariz", 1);
+	nose_color_pub_ = private_nh_.advertise<qbo_arduqbo::Nose>("/cmd_nose", 1);
 
 	//Initializing values
 	image_size_ = cv::Size(320,240);
@@ -206,7 +206,7 @@ void StereoSelector::imageCallback(const sensor_msgs::Image::ConstPtr& image_ptr
     image_size_ = cv_ptr->image.size();
     cv::cvtColor(cv_ptr->image, image_received, CV_BGR2RGB);
 
-    qbo_arduqbo::Nariz nose;
+    qbo_arduqbo::Nose nose;
     nose.header.stamp = ros::Time::now();
     nose.color=0;
 
@@ -651,9 +651,9 @@ void StereoSelector::headToZeroPosition()
 
 	ros::Publisher joint_pub_2 = private_nh_2.advertise<sensor_msgs::JointState>("/cmd_joints", 1);
 	ros::Subscriber joint_states_=private_nh_2.subscribe<sensor_msgs::JointState>("/joint_states",10,&StereoSelector::newJointState, this);
-	ros::Publisher nose_pub = private_nh_2.advertise<qbo_arduqbo::Nariz>("/cmd_nariz", 1);
+	ros::Publisher nose_pub = private_nh_2.advertise<qbo_arduqbo::Nose>("/cmd_nose", 1);
 
-    qbo_arduqbo::Nariz nose;
+    qbo_arduqbo::Nose nose;
     nose.header.stamp = ros::Time::now();
     nose.color=0;
 
