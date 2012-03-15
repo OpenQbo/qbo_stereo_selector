@@ -44,7 +44,7 @@
 #include <stereo_msgs/DisparityImage.h>
 #include <sensor_msgs/SetCameraInfo.h>
 #include <image_transport/image_transport.h>
-#include <qbo_arduqbo/Nariz.h>
+#include <qbo_arduqbo/Nose.h>
 
 #include <sensor_msgs/JointState.h>
 
