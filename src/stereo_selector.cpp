@@ -333,7 +333,7 @@ void StereoSelector::disparityImageCallback(const stereo_msgs::DisparityImage::C
     //Computing selection
     if(object_detected_bool_ == false)
     {
-    	ROS_INFO("Searching for object using FIND ROI. Best object mean till now: %lg",object_roi_mean_);
+    	ROS_INFO("Searching for object using FIND ROI. Best object mean till now: %lg. Distance threshold: %lg",object_roi_mean_, distance_filter_threshold_);
     	object_detected_bool_ = findRoi(point_distances_normalized);
 
     }
