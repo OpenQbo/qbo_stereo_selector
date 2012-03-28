@@ -546,7 +546,6 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 	else if(vel_leftright<-3.1)
 	  vel_leftright = -3.1;
 
-
 	vel_leftright = abs(vel_leftright);
 	vel_updown = abs(vel_updown);
 
@@ -558,10 +557,8 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 	left_right = atan2((left_right - p_.at<float>(0,2)),p_.at<float>(0,0));
 	up_down = atan2((up_down - p_.at<float>(1,2)),p_.at<float>(1,1));
 
-	left_right = -left_right + yaw_from_joint_;
+	left_right = yaw_from_joint_ - left_right;
 	up_down = up_down + tilt_from_joint_;
-
-
 
 	sensor_msgs::JointState joint_state;
 	int servos_count=2;
@@ -573,6 +570,7 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 
 	if(undetected_count_<undetect_threshold_) //If object was detected
 	{
+		
 		joint_state.position[0]=left_right;
 		joint_state.velocity[0]= vel_leftright;
 	}
@@ -604,7 +602,6 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 	joint_state.header.stamp = ros::Time::now();
 	//Publishing to topic to move head
 	joint_pub_.publish(joint_state);
-
 
 	/*
 	 * Printing ROS_INFO
