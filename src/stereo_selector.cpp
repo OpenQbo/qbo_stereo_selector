@@ -232,7 +232,7 @@ void StereoSelector::imageCallback(const sensor_msgs::Image::ConstPtr& image_ptr
 		cv_image.image = cv_ptr->image(object_roi_);
 		viewer_object_image_pub_.publish(cv_image.toImageMsg());
 
-		nose.color=4;
+		nose.color=1;
     }
 
     if(move_head_bool_)
@@ -588,7 +588,11 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 
 	if(undetected_count_ < undetect_threshold_)
 	{
-		joint_state.position[1]=up_down;  //TODO remove the increment
+		if(pos_tilt>0)	
+			joint_state.position[1]=1.5;  //TODO remove the increment
+		else	
+			joint_state.position[1]=-1.5;  //TODO remove the increment
+		//joint_state.position[1]=up_down;  //TODO remove the increment
 		joint_state.velocity[1]=vel_updown;
 	}
 	else //Object was not detected
