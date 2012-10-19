@@ -232,7 +232,7 @@ void StereoSelector::imageCallback(const sensor_msgs::Image::ConstPtr& image_ptr
 		cv_image.image = cv_ptr->image(object_roi_);
 		viewer_object_image_pub_.publish(cv_image.toImageMsg());
 
-		nose.color=1;
+		nose.color=2;
     }
 
     if(move_head_bool_)
