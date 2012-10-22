@@ -137,9 +137,9 @@ void StereoSelector::onInit()
     u_act_=0;
     u_prev_=0;
     diff_u_=0;
-    kp_u_=0.0050; //0060
+    kp_u_=0.0050; //0.0050
     ki_u_=0.00;
-    kd_u_=0.00;
+    kd_u_=0.02;
 
     v_act_=0;
     v_prev_=0;
@@ -492,7 +492,7 @@ void StereoSelector::moveHead()
 
 	float pan_velocity, tilt_velocity;
 
-	u_act_ = object_pos_.x-20;  //The -20 is because we consider the left eye, thus we need a small offset
+	u_act_ = object_pos_.x;  //The -20 is because we consider the left eye, thus we need a small offset
 									 //to keep the head centered in respect to the object
 	v_act_ = object_pos_.y;  
 	/*
@@ -570,8 +570,12 @@ void StereoSelector::setHeadPosition(float pos_tilt, float pos_pan, float vel_up
 
 	if(undetected_count_<undetect_threshold_) //If object was detected
 	{
+		if(pos_pan>0)	
+			joint_state.position[0]=-1.7;
+		else	
+			joint_state.position[0]=1.7; 
 		
-		joint_state.position[0]=left_right;
+		//joint_state.position[0]=left_right;
 		joint_state.velocity[0]= vel_leftright;
 	}
 	else //Object was not detected
