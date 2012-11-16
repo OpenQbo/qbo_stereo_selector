@@ -137,14 +137,14 @@ void StereoSelector::onInit()
     u_act_=0;
     u_prev_=0;
     diff_u_=0;
-    kp_u_=0.0050; //0.0050
+    kp_u_=0.0030; //0.0050
     ki_u_=0.00;
     kd_u_=0.02;
 
     v_act_=0;
     v_prev_=0;
     diff_v_=0;
-    kp_v_=0.0045;
+    kp_v_=0.0035;
     ki_v_=0.00;
     kd_v_=0.00;
 }
